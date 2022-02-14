@@ -1,0 +1,51 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "SujayADF"
+		},
+		"AzureBlobLS_connectionString": {
+			"value": ""
+		},
+		"AzureDatabricksLS_accessToken": {
+			"value": ""
+		},
+		"AzureSQLLS_connectionString": {
+			"value": ""
+		},
+		"OLAPDBLS_connectionString": {
+			"value": ""
+		},
+		"OLTPDBLS_connectionString": {
+			"value": ""
+		},
+		"SqlServerLS_connectionString": {
+			"value": ""
+		},
+		"SqlServerLS_password": {
+			"value": ""
+		},
+		"SujayExcelLS_password": {
+			"value": ""
+		},
+		"SqlServerLS_properties_typeProperties_userName": {
+			"value": "SUJAY-PC\\Sujay"
+		},
+		"SujayExcelLS_properties_typeProperties_host": {
+			"value": "C:\\Users\\Sujay\\Desktop\\Azure\\Training\\"
+		},
+		"SujayExcelLS_properties_typeProperties_userId": {
+			"value": "Sujay"
+		},
+		"BlobCreatedTrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/f538ca7f-fe95-4ebd-ac57-497d636d15e1/resourceGroups/Sujay/providers/Microsoft.Storage/storageAccounts/sujaystgacc"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
