@@ -1,0 +1,17 @@
+{
+	"name": "SujayExcelLS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "C:\\Users\\Sujay\\Desktop\\Azure\\Training\\",
+			"userId": "Sujay",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3NmMzYmI2NS05MDVhLTQ3ODgtYTVmZi1mNjYzODYwNWQzZDYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "OnPremIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"name": "FullCopyPipelineSinkDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@concat('Incremental-',pipeline().RunId,'.txt')",
+					"type": "Expression"
+				},
+				"folderPath": "ChangeTracking",
+				"container": "destination"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

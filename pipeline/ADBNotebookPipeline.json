@@ -1,0 +1,30 @@
+{
+	"name": "ADBNotebookPipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "DemoNotebook",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/gd000003933@ups.com/DemoNotebook"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricksLS",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-02-12T16:48:04Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

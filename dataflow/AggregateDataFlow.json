@@ -1,0 +1,32 @@
+{
+	"name": "AggregateDataFlow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AggregateSourceDS",
+						"type": "DatasetReference"
+					},
+					"name": "SalesOrderDetail"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AggregateDestinationDS",
+						"type": "DatasetReference"
+					},
+					"name": "BlobSink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Aggregate1"
+				}
+			],
+			"script": "source(output(\n\t\tSalesOrderID as integer,\n\t\tSalesOrderDetailID as integer,\n\t\tOrderQty as integer,\n\t\tProductID as integer,\n\t\tUnitPrice as decimal(19,4),\n\t\tUnitPriceDiscount as decimal(19,4),\n\t\tLineTotal as decimal(38,6),\n\t\trowguid as string,\n\t\tModifiedDate as timestamp\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> SalesOrderDetail\nSalesOrderDetail aggregate(groupBy(ProductID),\n\t{Total Revenue} = sum(LineTotal)) ~> Aggregate1\nAggregate1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> BlobSink"
+		}
+	}
+}

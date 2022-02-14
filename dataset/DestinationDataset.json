@@ -1,0 +1,25 @@
+{
+	"name": "DestinationDataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSQLLS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"DestTableName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().DestTableName",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

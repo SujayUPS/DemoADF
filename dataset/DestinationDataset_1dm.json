@@ -1,0 +1,16 @@
+{
+	"name": "DestinationDataset_1dm",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSQLLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "CustData"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
