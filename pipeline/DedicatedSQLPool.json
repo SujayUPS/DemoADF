@@ -1,0 +1,96 @@
+{
+	"name": "DedicatedSQLPool",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Incremental Data",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Check For Deleted Data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "Select * from dbo.AnkitaKukri where  Flag ='A'",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": {
+							"value": "delete from dbo.AnkitaKukri where ClientName in (@{activity('Check For Deleted Data').output.firstRow.ClientName})",
+							"type": "Expression"
+						},
+						"writeBehavior": "Insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AnkitaKukriTable",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AnkitaKukriDest",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Check For Deleted Data",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "DECLARE @temp VARCHAR(MAX)\nSELECT @temp = COALESCE(@temp+', ' ,'') +(''''+ClientName+'''')\nFROM dbo.AnkitaKukri where Flag='D'\nSELECT @temp as ClientName\nFROM dbo.AnkitaKukri where Flag='D'\nSELECT @temp as ClientName",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "AnkitaKukriTable",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Testing"
+		},
+		"annotations": []
+	}
+}

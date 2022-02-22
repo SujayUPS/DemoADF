@@ -1,0 +1,35 @@
+{
+	"name": "AnkitaKukriTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSQLLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ClientName",
+				"type": "varchar"
+			},
+			{
+				"name": "Age",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Flag",
+				"type": "char"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "AnkitaKukri"
+		}
+	}
+}
