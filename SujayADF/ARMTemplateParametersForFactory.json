@@ -8,16 +8,7 @@
 		"AzureBlobLS_connectionString": {
 			"value": ""
 		},
-		"AzureDatabricksLS_accessToken": {
-			"value": ""
-		},
 		"AzureSQLLS_connectionString": {
-			"value": ""
-		},
-		"OLAPDBLS_connectionString": {
-			"value": ""
-		},
-		"OLTPDBLS_connectionString": {
 			"value": ""
 		},
 		"SqlServerLS_connectionString": {
@@ -29,6 +20,21 @@
 		"SujayExcelLS_password": {
 			"value": ""
 		},
+		"AzureDatabricksLS_accessToken": {
+			"value": ""
+		},
+		"OLTPDBLS_connectionString": {
+			"value": ""
+		},
+		"OLAPDBLS_connectionString": {
+			"value": ""
+		},
+		"AzureSynapseAnalytics1_connectionString": {
+			"value": ""
+		},
+		"BlobCreatedTrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/f538ca7f-fe95-4ebd-ac57-497d636d15e1/resourceGroups/Sujay/providers/Microsoft.Storage/storageAccounts/sujaystgacc"
+		},
 		"SqlServerLS_properties_typeProperties_userName": {
 			"value": "SUJAY-PC\\Sujay"
 		},
@@ -37,9 +43,6 @@
 		},
 		"SujayExcelLS_properties_typeProperties_userId": {
 			"value": "Sujay"
-		},
-		"BlobCreatedTrigger_properties_typeProperties_scope": {
-			"value": "/subscriptions/f538ca7f-fe95-4ebd-ac57-497d636d15e1/resourceGroups/Sujay/providers/Microsoft.Storage/storageAccounts/sujaystgacc"
 		}
 	}
 }

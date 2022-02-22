@@ -11,21 +11,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobLS'"
 		},
-		"AzureDatabricksLS_accessToken": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accessToken' of 'AzureDatabricksLS'"
-		},
 		"AzureSQLLS_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSQLLS'"
-		},
-		"OLAPDBLS_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'OLAPDBLS'"
-		},
-		"OLTPDBLS_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'OLTPDBLS'"
 		},
 		"SqlServerLS_connectionString": {
 			"type": "secureString",
@@ -39,6 +27,26 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SujayExcelLS'"
 		},
+		"AzureDatabricksLS_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricksLS'"
+		},
+		"OLTPDBLS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'OLTPDBLS'"
+		},
+		"OLAPDBLS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'OLAPDBLS'"
+		},
+		"AzureSynapseAnalytics1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSynapseAnalytics1'"
+		},
+		"BlobCreatedTrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/f538ca7f-fe95-4ebd-ac57-497d636d15e1/resourceGroups/Sujay/providers/Microsoft.Storage/storageAccounts/sujaystgacc"
+		},
 		"SqlServerLS_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "SUJAY-PC\\Sujay"
@@ -50,10 +58,6 @@
 		"SujayExcelLS_properties_typeProperties_userId": {
 			"type": "string",
 			"defaultValue": "Sujay"
-		},
-		"BlobCreatedTrigger_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/f538ca7f-fe95-4ebd-ac57-497d636d15e1/resourceGroups/Sujay/providers/Microsoft.Storage/storageAccounts/sujaystgacc"
 		},
 		"containerUri": {
 			"type": "string",
@@ -85,35 +89,20 @@
 					"AzureBlobLS_connectionString": {
 						"value": "[parameters('AzureBlobLS_connectionString')]"
 					},
+					"AzureSQLLS_connectionString": {
+						"value": "[parameters('AzureSQLLS_connectionString')]"
+					},
 					"AzureDatabricksLS_accessToken": {
 						"value": "[parameters('AzureDatabricksLS_accessToken')]"
 					},
-					"AzureSQLLS_connectionString": {
-						"value": "[parameters('AzureSQLLS_connectionString')]"
+					"OLTPDBLS_connectionString": {
+						"value": "[parameters('OLTPDBLS_connectionString')]"
 					},
 					"OLAPDBLS_connectionString": {
 						"value": "[parameters('OLAPDBLS_connectionString')]"
 					},
-					"OLTPDBLS_connectionString": {
-						"value": "[parameters('OLTPDBLS_connectionString')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "SujayADF_ArmTemplate_1",
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2018-02-01",
-			"properties": {
-				"mode": "incremental",
-				"templateLink": {
-					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
-					"contentVersion": "1.0.0.0"
-				},
-				"parameters": {
-					"factoryName": {
-						"value": "[parameters('factoryName')]"
+					"AzureSynapseAnalytics1_connectionString": {
+						"value": "[parameters('AzureSynapseAnalytics1_connectionString')]"
 					},
 					"SqlServerLS_connectionString": {
 						"value": "[parameters('SqlServerLS_connectionString')]"
@@ -132,6 +121,24 @@
 					},
 					"SujayExcelLS_properties_typeProperties_userId": {
 						"value": "[parameters('SujayExcelLS_properties_typeProperties_userId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "SujayADF_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
 					}
 				}
 			},
